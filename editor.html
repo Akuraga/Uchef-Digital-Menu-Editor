@@ -1,0 +1,344 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/eggbon_element.css" />
+    <link rel="stylesheet" type="text/css" href="css/jquey-ui.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet" type="text/css" />
+    <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" />
+    <link href="css/editor.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="css/jquery.ui.ruler.css" />
+    <link rel='stylesheet' href='css/colorpicker.css' />
+    <link rel='stylesheet' href='css/colorpicker.css' />
+    <link rel='stylesheet' href='css/jqtree.css' />
+    <link rel='stylesheet' href='css/select_rect.css' />
+
+    <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+    <script type="text/javascript" src="js/jquery.form.js"></script>
+    <script type="text/javascript" src='js/tree.jquery.js'></script>
+    <!--<script type="text/javascript" src='js/jquery.fullscreen.js'></script>-->
+    <script type="text/javascript" src="js/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/jquery.ui.ruler.js"></script>
+    <script type="text/javascript" src='js/colorpicker.js'></script>
+    <script type="text/javascript" src='js/jstree.min.js'></script>
+    
+    <script type="text/javascript" src="js/eggbon_core.js"></script>
+    <script type="text/javascript" src="js/eggbon_html.js"></script>
+    <script type="text/javascript" src="js/eggbon_util.js"></script>
+    <script type="text/javascript" src="js/eggbon_clipboard.js"></script>
+    <script type="text/javascript" src="js/eggbon_config.js"></script>
+    <script type="text/javascript" src="js/eggbon_context.js"></script>
+    <script type="text/javascript" src="js/eggbon_project.js"></script>
+    <script type="text/javascript" src="js/eggbon_page.js"></script>
+    <script type="text/javascript" src="js/eggbon_class.js"></script>
+    <script type="text/javascript" src="js/eggbon_ns.js"></script>
+    <script type="text/javascript" src="js/eggbon_controller.js"></script>
+    <script type="text/javascript" src="js/eggbon_component.js"></script>
+    <script type="text/javascript" src="js/eggbon_multiselection.js"></script>
+    <script type="text/javascript" src="js/eggbon_canvas.js"></script>
+    <script type="text/javascript" src="js/eggbon_validation.js"></script>
+    <script type="text/javascript" src="js/eggbon_preview.js"></script>
+    <script type="text/javascript" src="js/eggbon_page_window.js"></script>
+    <script type="text/javascript" src="js/eggbon_clipart.js"></script>
+    <script type="text/javascript" src="js/eggbon_project_window.js"></script>
+    <script type="text/javascript" src="js/eggbon_property_window.js"></script>
+    <script type="text/javascript" src="js/eggbon_order_window.js"></script>
+    <script type="text/javascript" src="js/eggbon_resource.js"></script>
+    <script type="text/javascript" src="js/eggbon_api.js"></script>
+    <script type="text/javascript" src="js/html2canvas.js"></script>
+   <!-- <script type="text/javascript" src="js/eggbon_session.js"></script>-->
+
+    <script >
+        $(document).ready(function () { EggbonEditor.init();});
+    </script>
+    <title>Uchef Project</title>
+</head>
+<body>
+    <!----- 상단 ---->
+    <div class="header">
+        <!----- 상단 컬러바 ---->
+        <div class="heaer_colorbar">
+            <a class ="logo_uchef" href ="javascript: void(0)"><img  src="http://www.uchef.co.kr/kor/img/making/mypage_logo.png" /></a>
+            <script>
+            	$('.logo_uchef').click(function(event){
+            		event.stopPropagation();
+            		event.preventDefault();
+            		//location.href = location.protocol + '//' +location.host; 
+            	});
+            	
+            </script>
+            <div class="btn btn_back"><a href="javascript:history.go(-1)"><i class="fa fa-chevron-left" aria-hidden="true"></i>Back</a></div>
+            <div class="btn btn_preview"><i class="fa fa-external-link" aria-hidden="true"></i><a href="">Preview</a></div>
+            <div class="btn btn_save"><i class="fa fa-floppy-o " aria-hidden="true"></i><a href="javascript:void(0)">Save</a></div>
+            <div style ='display:none'  class="btn btn_full_screen"><i class="fa fa-sliders" aria-hidden="true"></i><a href="javacript:void(0)">Full Screen</a></div>
+            <div style ='display:none' class="btn btn_html2canvas"><i class="fa fa-product-hunt" aria-hidden="true"></i><a href="javacript:void(0)">Transfer to img</a></div>
+            <img  class ="btn btn_create_project ajax_top_loading" title = "" src="images/ajax_top_loading.svg"/>
+            <div style ='display:none' class="btn btn_create_project"><i class="fa fa-product-hunt" aria-hidden="true"></i><a href="javacript:void(0)">Create Project</a></div>
+            
+         
+        </div>
+        <!----- 상단 흰색바 ---->
+        <div class="header_bottom">
+            <div class="txt_project">
+            	<i class="fa fa-file-text fa-lg" aria-hidden="true"></i>Project : <span id='project_name'>ProjectName</span>&nbsp; : <span id='project_real_zoom'></span>
+            	</div>
+            <div class="attributes_center">
+            	 <!----- 상단 좌표 표시 제거 
+                <div  style ="width: 50px" class="xtitle">X : <span class ="top_x_pos"></span></div>
+                <div style ="width: 50px" class="ytitle">Y : <span class ="top_y_pos"></span></div>
+                 ---->
+                <div class="zoomset">
+                    <div class="zoomout"></div>
+                    <input readonly class="zoomvalue" value="100%" />
+                    <div class="zoomin"></div>
+                </div>
+                <div class="snaptitle">Snap</div>
+                <div class="snapbox">
+                    <select id="snap_select">
+                        <option value="1">1</option>
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="15">15</option>
+                        <option value="20">20</option>
+                        <option value="25">25</option>
+                        <option value="30">30</option>
+                        <option value="35">35</option>
+                        <option value="40">40</option>
+                        <option value="45">45</option>
+                        <option value="50">50</option>
+                        <option value="55">55</option>
+                        <option value="60">60</option>
+                        <option value="70">70</option>
+                        <option value="80">80</option>
+                        <option value="90">90</option>
+                        <option value="100">100</option>
+                    </select>
+                </div>
+                <!--align -->
+                <ul class="aligntoolbar">
+                    <li class="align btn-alignleft" title="Align left" data-action="left-most"></li>
+                    <li class="align btn-alignright" title="Align right" data-action="right-most"></li>
+                    <li class="align btn-aligntop" title="Align top" data-action="top-most"></li>
+                    <li class="align btn-alignbottom" title="Align bottom" data-action="bottom-most"></li>
+                    <!--<li class="btn-aligncenter" title="Align center"></li>-->
+                    <!--<li class="btn-alignmiddle" title="Align middle"></li>-->
+                    <li class="align btn-align-h-offset btn-spaceouthorizontally" title="Distribute horizontal offset" data-action="align-h-offset"></li>
+                    <li class="align btn-align-v-offset btn-spaceoutvertically" title="Distribute vertical offset" data-action="align-v-offset"></li>
+                    <li class="align btn-fill" title="fill" data-action="fill"></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!----- 좌측 ---->
+    <div class="left_menu_container">
+        <!----- 트리메뉴 ---->
+        <div class="tree-menus">
+            <div class="tree-menu-btns">
+                <div class="btn btn_addpage" style="cursor:pointer"><a href="javascript:void(0);"><i class="fa fa-plus" aria-hidden="true"></i> Add page</a></div>
+                <div class="btn_sbutton btn-tree-expand">
+                    <a href="javascript:void(0)"><i class="fa fa-sort-desc fa-2x" aria-hidden="true"></i><i class="fa fa-sort-asc fa-2x" aria-hidden="true" style="display:none;"></i></a>
+                </div>
+            </div>
+            <div id="page_sidebar" >
+            </div>
+        </div>
+        <!----- 메뉴버튼 ---->
+        <div class="menu_btns">
+            <button id="tool_image" data-comp="image" type="button" class="button toolbutton"><i data-comp="image" class="fa fa-picture-o" aria-hidden="true"></i><br />Image</button>
+            <button id="tool_text" data-comp="text" type="button" class="button toolbutton"><i data-comp="text" class="fa fa-font" aria-hidden="true"></i><br />Text</button>
+            <button id="tool_link" data-comp="link" type="button" class="button toolbutton"><i data-comp="link" class="fa fa-link" aria-hidden="true"></i><br />Link</button>
+            <button id="tool_order" data-comp="order" type="button" class="button toolbutton"><i data-comp="order" class="fa fa-shopping-cart" aria-hidden="true"></i><br />Order</button>
+            <button id="tool_popup" data-comp="popup" type="button" class="button toolbutton"><i data-comp="popup" class="fa fa-files-o" aria-hidden="true"></i><br />Popup</button>
+            <button id="tool_list" data-comp="list" type="button" class="button toolbutton"><i data-comp="list" class="fa fa-list-alt" aria-hidden="true"></i><br />List</button>
+            <button  id="tool_listrow" style="display:none" data-comp="listrow" type="button" class="button toolbutton"><i data-comp="listrow" class="fa fa-list-alt" aria-hidden="true"></i><br />Row</button>
+        </div>
+    </div>
+    <!----- 내용 ---->
+    <div class="content_container" id ="zoom-container">
+        <div class="vertical_table" id="vertical_table" style="position:absolute;">
+            <!----- page container ---->
+            <div id="page-container" class="vertical_cell" style="position:absolute;">
+                <!----- page added ---->
+            </div>
+
+        </div>
+    </div>
+	<!----- image upload form ---->
+		<form class="upload_image_frm"   action="/editor.action?mode=10020" method="post">
+				<input style ="display:none" type="file" id="attach"  name="attach" accept="image/x-png,  image/jpg,  image/jpeg"/>
+				<input type="hidden" id="x" name="x"  value="13"  />
+				<input type="hidden" id="y" name="y"  value="14"  />
+				<input type="hidden" id="member_seq" name="member_seq" />
+				<input type="hidden" id="project_seq" name="project_seq" />
+		</form>
+ <!----- proeprty window  ---->
+    <div id="element" class="element_controller" style="position: absolute;;display: none; box-shadow: 2px 2px 2px #cdcdcd;">
+        <li id="el_page" class="el_page">
+            <div class="el_title"><div class="text">Page</div></div>
+            <div class="field_title field_title_name">Name</div> <input class="field_value_name" type="text" name="title" />
+            <div class="field_title field_title_number">No</div> <span class="field_value_number">(1/1)</span>
+        </li>
+        <li id="el_image" class="el_img">
+            <div class="el_title"><div class="text">Image</div></div>
+            <div class="field_title field_title_name">Name</div> <input class="field_value_name" type="text" name="title" />
+            <div class="field_title field_title_x">X</div> <input class="field_value_x" type="text" name="x" />
+            <div class="field_title field_title_y">Y</div> <input class="field_value_y" type="text" name="y" />
+            <div class="field_title field_title_w">Width</div> <input class="field_value_w" type="text" name="w" />
+            <div class="field_title field_title_h">Height</div> <input class="field_value_h" type="text" name="h" />
+            <div class="field_title field_title_owhyn">Fix Ratio</div> <input class="field_value_owhyn" type="checkbox" name="oWH_YN" />
+            <div class="upload hidden" name="uploadFake" >
+            	<div class="btn_text">Image Upload</div>
+            	<div class="btn_icon fa fa-upload" ></div>
+            </div>
+              <div class="action_btn_grp" >
+              		<button class = "extra-action" title ="reset image" data-action="reset image"> <i class="fa fa-image"></i>Reset</button>
+					<button class = "extra-action" title ="clipart" data-action="clipart"><i class="fa fa-paperclip"></i>Clipart</button>	
+            </div>
+        </li>
+        <li id="el_link" class="el_link">
+            <div class="el_title"><div class="text">Link</div></div>
+            <div class="field_title field_title_name">Name</div> <input class="field_value_name" type="text" name="title" />
+            <div class="field_title field_title_x">X</div> <input class="field_value_x" type="text" name="x" />
+            <div class="field_title field_title_y">Y</div> <input class="field_value_y" type="text" name="y" />
+            <div class="field_title field_title_w">Width</div> <input class="field_value_w" type="text" name="w" />
+            <div class="field_title field_title_h">Height</div> <input class="field_value_h" type="text" name="h" />
+            <div class="field_title field_title_owhyn">Fix Ratio</div> <input class="field_value_owhyn" type="checkbox" name="oWH_YN" />
+            <div class="field_value_upload hidden" name="uploadFake" ><div class="btn_text">Image Upload</div><div class="btn_icon fa fa-upload"></div></div>
+            <div class="field_title field_title_linktype">type</div>
+            <div class="select-style">
+                <select class="field_value_linktype" name="linktype">
+                    <option value="PageLink">PageLink</option>
+                    <option value ="Web" >Web</option>
+                    <option value="Popup">Popup</option>
+                    <option value="Phonenumber">Phonenumber</option>
+                    <option value="YouTube">YouTube</option>
+                    <option value="MallinMall">MallinMall</option>
+                    <option value="Email">Email</option>
+                    <option value="Map">Map</option>
+                </select>
+            </div>
+            <div class="field_title field_title_location">Position</div>
+
+            <div class="linkPageSelectDiv" style="display: block;">
+                <div class="select-style">
+                    <select class="field_value_linkpage" name="linkPageSelect">
+                        <option value="">select</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="linkPopupSelectDiv" style="display: none;">
+                <div class="select-style">
+                    <select class="field_value_linkpopup" type="text" name="linkPopupSelect">
+                        <option value="">select</option></select>
+                </div>
+            </div>
+
+            <input class="field_value_linkweb" type="text" name="linkPageWeb" style="display: block;" />
+            <input class="field_value_linkphonenumber" type="text" name="linkPagePhonenumber" style="display: none;" />
+            <input class="field_value_linkyoutube" type="text" name="linkYouTube" style="display: block;" />
+             <input class="field_value_linkmallinmall" type="text" name="linkMallInMall" style="display: block;" />
+             <input class="field_value_linkEmail" type="text" name="linkEmail" style="display: block;" />
+             <div class = "link_map" style="display: block;">
+             	<div class="field_title field_title_lat"><input class="field_value_linkmap" type="text" name="field_value_linkmap"  title ="address" placeholder ="address"/></div> 
+             </div>
+            
+             <div class="action_btn_grp" >
+              		<button class = "extra-action" title ="reset image" data-action="reset image"> <i class="fa fa-image"></i>Reset</button>
+					<button class = "extra-action" title ="clipart" data-action="clipart"><i class="fa fa-paperclip"></i>Clipart</button>	
+            </div>
+        </li>
+        <li id="el_order" class="el_order">
+            <div class="el_title"><div class="text">Order</div></div>
+            <div class="field_title field_title_name">Name</div> <input class="field_value_name" type="text" name="title" />
+            <div class="field_title field_title_x">X</div> <input class="field_value_x" type="text" name="x" />
+            <div class="field_title field_title_y">Y</div> <input class="field_value_y" type="text" name="y" />
+            <div class="field_title field_title_w">Width</div> <input class="field_value_w" type="text" name="w" />
+            <div class="field_title field_title_h">Height</div> <input class="field_value_h" type="text" name="h" />
+            <div class="field_title field_title_owhyn">Fix Ratio</div> <input class="field_value_owhyn" type="checkbox" name="oWH_YN" />
+            <div class="field_value_upload hidden" name="uploadFake" ><div class="btn_text">Image Upload</div><div class="btn_icon fa fa-upload"></div></div>
+            <div class="field_title field_title_menutitle">Menu</div> <input readonly="" class="field_value_menutitle"  type="text" name="menutitle" />
+            <div class="field_title field_title_price">Price</div> <input readonly="" class="field_value_price" type="text" name="price" />
+            <button name="search" class="btn_search"><i class="fa fa-search" ></i></button>
+            	<div class="action_btn_grp" >
+              		<button class = "extra-action" title ="reset image" data-action="reset image"> <i class="fa fa-image"></i>Reset</button>
+					<button class = "extra-action" title ="clipart" data-action="clipart"><i class="fa fa-paperclip"></i>Clipart</button>	
+            </div>
+        </li>
+        <li id="el_popup" class="el_popup">
+            <div class="el_title"><div class="text">Popup</div></div>
+            <div class="field_title field_title_name">Name</div> <input class="field_value_name" type="text" name="title" />
+            <div class="field_title field_title_x">X</div> <input class="field_value_x" type="text" name="x" />
+            <div class="field_title field_title_y">Y</div> <input class="field_value_y" type="text" name="y" />
+            <div class="field_title field_title_w">Width</div> <input class="field_value_w" type="text" name="w" />
+            <div class="field_title field_title_h">Height</div> <input class="field_value_h" type="text" name="h" />
+            <div class="field_title field_title_owhyn">Fix Ratio</div> <input class="field_value_owhyn" type="checkbox" name="oWH_YN" />
+        </li>
+        <li id="el_list" class="el_list hidden">
+            <div class="el_title"><div class="text">List</div></div>
+            <div class="field_title field_title_name">Name</div> <input class="field_value_name" type="text" name="title" />
+            <div class="field_title field_title_x">X</div> <input class="field_value_x" type="text" name="x" />
+            <div class="field_title field_title_y">Y</div> <input class="field_value_y" type="text" name="y" />
+            <div class="field_title field_title_w">Width</div> <input class="field_value_w" type="text" name="w" />
+            <div class="field_title field_title_h">Height</div> <input class="field_value_h" type="text" name="h" />
+            <div class="field_title field_title_owhyn">Fix Ratio</div> <input class="field_value_owhyn" type="checkbox" name="oWH_YN" />
+        </li>
+        <li id="el_listrow" class="el_list_row el_list_row1">
+            <div class="el_title"><div class="text">Row</div></div>
+            <div class="field_title field_title_name">Name</div> <input class="field_value_name" type="text" name="title" />
+            <div class="field_title field_title_x">X</div> <input class="field_value_x" type="text" name="x" />
+            <div class="field_title field_title_y">Y</div> <input class="field_value_y" type="text" name="y" />
+            <div class="field_title field_title_w">Width</div> <input class="field_value_w" readonly="" type="text" name="w" />
+            <div class="field_title field_title_h">Height</div> <input class="field_value_h" type="text" name="h" />
+            <div class="field_title field_title_owhyn">Fix Ratio</div> <input class="field_value_owhyn" type="checkbox" name="oWH_YN" />
+        </li>
+        <li id="el_text" class="el_text">
+            <div class="el_title"><div class="text">Text</div></div>
+            <div class="field_title field_title_name">Name</div> <input class="field_value_name" type="text" name="title" />
+            <div class="field_title field_title_x">X</div> <input class="field_value_x" type="text" name="x" />
+            <div class="field_title field_title_y">Y</div> <input class="field_value_y" type="text" name="y" />
+            <div class="field_title field_title_w">Width</div> <input class="field_value_w" type="text" name="w" />
+            <div class="field_title field_title_h">Height</div> <input class="field_value_h" type="text" name="h" />
+            <div class="field_title field_title_owhyn">Fix Ratio</div> <input class="field_value_owhyn" type="checkbox" name="oWH_YN" />
+            <div class="field_title field_title_fontface">Font-face</div>
+            <div class="fontfaceSelectDiv">
+                <div class="select-style" >
+                    <select class="field_value_fontface" name="fontface">
+                        <option value="Open Sans">Open Sans</option>								<!-- mblee -->
+                        <option value="Nanum Gothic">Nanum Gothic</option> 							<!-- mblee -->
+                        <option value="Malgun Gothic">Malgun Gothic</option> 						<!-- mblee -->
+                        <option value="Arial">Arial</option>
+                        <option value="Verdana">Verdana</option>
+                        <option value="Impact">Impact</option>
+                        <option value="Comic Sans MS">Comic Sans MS</option>						<!-- mblee -->
+                    </select>
+                </div>
+            </div>
+            <div class="field_title field_title_size">Size</div>
+            <div class="sizeSelectDiv">
+                <div class="select-style">
+                    <select class="field_value_size" name="size">
+                        <option value="10pt">10pt</option>
+                        <option value="15pt">15pt</option>
+                        <option value="20pt">20pt</option>
+                        <option value="25pt">25pt</option>
+                        <option value="30pt">30pt</option>
+                        <option value="35pt">35pt</option>
+                        <option value="40pt">40pt</option>
+                        <option value="45pt">45pt</option>
+                        <option value="50pt">50pt</option>
+                        <option value="55pt">55pt</option>
+                        <option value="65pt">65pt</option>
+                        <option value="75pt">75pt</option>
+                    </select>
+                </div>
+            </div>
+            <!--  fontsize: <input type="text" name="fontsize"><br>
+            -->
+            <div class="field_title field_title_color">Color</div><div type="text" class="field_value_color" style="background-color: rgb(0,0,0);"></div>
+        </li>
+    </div>
+     <!----- proeprty window end  ---->
+</body>
+</html>
