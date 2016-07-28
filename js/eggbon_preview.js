@@ -450,7 +450,9 @@ $(function () {
 					'top' : component.ypos + 'px', 
 					'width' : component.width + 'px', 
 					'height' : component.height + 'px',
-					'position' : 'absolute'
+					'position' : 'absolute',
+					'overflow-y' : 'auto',
+					'overflow-x' : 'hidden'
 				});
 				$container.append($list);
 				return $list;
@@ -535,19 +537,15 @@ $(function () {
             });
 			
 			 $('.preview_content .component-image').each(function(event){
-			 		if ($(this).attr('src') == '' || 
-             			$(this).attr('src') == 'undefined' || 
-             			$(this).attr('src') == 'none' ||  
-             			$(this).attr('src' )== EggbonEditor.resource.getDefaultResourcePath('image')){
+			 		if ($(this).attr('src') == '' || $(this).attr('src') == 'undefined' || 
+             			$(this).attr('src') == 'none' ||  $(this).attr('src' )== EggbonEditor.resource.getDefaultResourcePath('image')){
              			$(this).css('opacity', 0);
              		} 
 			 });
             
              $('.preview_content .component-order').each(function(index){
-             		if ($(this).attr('src') == '' || 
-             			$(this).attr('src') == 'undefined' || 
-             			$(this).attr('src') == 'none' ||  
-             			$(this).attr('src' )== EggbonEditor.resource.getDefaultResourcePath('order')){
+             		if ($(this).attr('src') == '' || $(this).attr('src') == 'undefined' || 
+             			$(this).attr('src') == 'none' ||  $(this).attr('src' )== EggbonEditor.resource.getDefaultResourcePath('order')){
              			$(this).css('opacity', 0);
              		} 
              });

@@ -47,7 +47,6 @@
     <script type="text/javascript" src="js/eggbon_resource.js"></script>
     <script type="text/javascript" src="js/eggbon_api.js"></script>
     <script type="text/javascript" src="js/html2canvas.js"></script>
-   <!-- <script type="text/javascript" src="js/eggbon_session.js"></script>-->
 
     <script >
         $(document).ready(function () { EggbonEditor.init();});
@@ -59,13 +58,17 @@
     <div class="header">
         <!----- 상단 컬러바 ---->
         <div class="heaer_colorbar">
-            <a class ="logo_uchef" href ="javascript: void(0)"><img  src="http://www.uchef.co.kr/kor/img/making/mypage_logo.png" /></a>
+            <!-----<a class ="logo_uchef" href ="javascript: void(0)"> ---->
+            	<img  src="http://www.uchef.co.kr/kor/img/making/mypage_logo.png" />
+            <!----- </a> ---->
+            <!-----
             <script>
             	$('.logo_uchef').click(function(event){
             		event.stopPropagation();
             		event.preventDefault();
-            		//location.href = location.protocol + '//' +location.host; 
+            		location.href = location.protocol + '//' +location.host; 
             	});
+            	---->
             	
             </script>
             <div class="btn btn_back"><a href="javascript:history.go(-1)"><i class="fa fa-chevron-left" aria-hidden="true"></i>Back</a></div>

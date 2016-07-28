@@ -125,13 +125,26 @@ $(function () {
                 		});
                 		cateTree.push(cateTreeItem);
                 	 });
-            		 context.$clipArtTree.jstree({
-            		 	core : {data : cateTree,open_parents: true,load_open: true},
-            		 	themes: { theme : 'classic' ,icons : true, dots : true}, 
+					context.$clipArtTree.on('loaded.jstree', function(){
+						context.$clipArtTree.jstree('open_all'); 
+						context.$clipArtTree.jstree('select_node', '#115'); 
+						context.$clipArtTree.jstree('activate_node', '#115'); 
+						context.$clipArtTree.jstree('show_icons'); 
+						context.$clipArtTree.jstree('show_dots'); 
+					});
+            		context.$clipArtTree.jstree({
+            		 	core : {
+            		 		data : cateTree,
+            		 		open_parents: true,
+            		 		load_open: true,
+            		 		themes: { 
+            		 			icons : true, 
+            		 			dots : true
+            		 		}, 
+            		 	},
             		 	plugins : ['theme']
             		 });
             		 
-            		context.$clipArtTree.on("ready.jstree", function(e, data) {context.$clipArtTree.jstree("select_node", "#114");});
             		context.$clipArtTree.bind("select_node.jstree", function (event, data) {
 						var original = data.node.original;
 						if (original.level_deps == 1){
