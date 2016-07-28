@@ -10,8 +10,8 @@ $(function () {
             var context = this;
             this.validationTimeId = setInterval(function () {
                 if (EggbonEditor.project.pages && EggbonEditor.project.pages.length > 0) {
-                    console.log("### 백그라운드 유효성 체크 시작");
-                    console.log("### 총 페이지 갯수 : " + EggbonEditor.project.pages.length);
+                    //console.log("### 백그라운드 유효성 체크 시작");
+                    //console.log("### 총 페이지 갯수 : " + EggbonEditor.project.pages.length);
 
                     $.each(EggbonEditor.project.pages, function (index, page) {
                         context.validate(page);
@@ -25,7 +25,7 @@ $(function () {
         },
 
         validate: function (component) {
-            console.log("validate");
+            //console.log("validate");
             var context = this;
             this.validateComponent(component);
             $.each(component.childs, function (index, comp) {
@@ -58,7 +58,7 @@ $(function () {
      
         showAndHideAlertMarker : function(component) {
             var alertSelector = ['alert', component.UUID].join('_');
-            console.log("처리할 마커 : " + alertSelector);
+            //console.log("처리할 마커 : " + alertSelector);
             if (component.isValid == true) {
                 $("#" + alertSelector).hide();
             } else {
@@ -81,6 +81,11 @@ $(function () {
         validateTextComponent: function (component) {
             this.isComponentNameNullOfEmpty(component);
             this.isValidCoordNumber(component);
+            
+             if (this.isNullOrEmpty(component.text)) {
+                component.validationErrorMessages.push("empty text ");
+            }
+            
             if (component.validationErrorMessages.length > 0) {
                 component.isValid = false;
             } else {

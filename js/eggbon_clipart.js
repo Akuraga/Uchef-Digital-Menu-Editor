@@ -12,16 +12,16 @@ $(function () {
 			});
 			
 			this.$clipArtConainer.find('.view_th').click(function(event){
-				$(this).removeClass('selected');
-				$('.view_list').addClass('selected');
+				$(this).addClass('select');
+				$('.view_list').removeClass('select');
 				$('#icon_container').removeClass('iconlist_b');
 				
 				$('#icon_container').addClass('iconlist_a');
 			});
 			
 			this.$clipArtConainer.find('.view_list').click(function(event){
-				$(this).removeClass('selected');
-				$('.view_th').addClass('selected');
+				$(this).addClass('select');
+				$('.view_th').removeClass('select');
 				$('#icon_container').removeClass('iconlist_a');
 				$('#icon_container').addClass('iconlist_b');
 			});
@@ -91,7 +91,7 @@ $(function () {
                 	  	var clipCate1_code_d2 = clipCateInfo1.code_d2;
                 	  	var clipCate1_code_d3 = clipCateInfo1.code_d3;
                 	  	var clipCate1_code_seq = clipCateInfo1.code_seq;
-                	  	
+                	  		
                 	  	var cateTreeItem = {
                 	  		text : clipCate1_code_name, 
                 	  		id : clipCate1_code_seq , 
@@ -108,39 +108,35 @@ $(function () {
 	                	  	var clipCate2_code_d2 = clipCateInfo2.code_d2;
 	                	  	var clipCate2_code_d3 = clipCateInfo2.code_d3;
 	                	  	var clipCate2_code_seq = clipCateInfo2.code_seq;
-      
+      						
                 			if (clipCate1_code_d2 == clipCate2_code_d2) {
                 				cateTreeItem.children.push(
                 					{
                 						text : clipCate2_code_name,
-                						id : clipCate2_code_seq , 
+                						id  : clipCate2_code_seq, 
                 	  					d1 : clipCate2_code_d1, 
                 	  					d2 : clipCate2_code_d2, 
                 	  					d3 : clipCate2_code_d3,
                 	  					code_seq : clipCate2_code_seq,
                 	  					level_deps : 2,  
-                						id : clipCate2_code_seq});	
+                						id : clipCate2_code_seq}
+                					);	
                 			}
                 		});
                 		cateTree.push(cateTreeItem);
                 	 });
-                	 console.log("카테고리 수정된 트리 출력");
-            		 console.log(cateTree);
             		 context.$clipArtTree.jstree({
-            		 	core : {data : cateTree},
+            		 	core : {data : cateTree,open_parents: true,load_open: true},
             		 	themes: { theme : 'classic' ,icons : true, dots : true}, 
             		 	plugins : ['theme']
             		 });
             		 
+            		context.$clipArtTree.on("ready.jstree", function(e, data) {context.$clipArtTree.jstree("select_node", "#114");});
             		context.$clipArtTree.bind("select_node.jstree", function (event, data) {
-						console.log(data);
 						var original = data.node.original;
-						console.log("노드 조사 ");
-						console.log(original.level_deps);
 						if (original.level_deps == 1){
 							return;
 						}else {
-							console.log("클립아트 로딩");
 							context.loadClipArts(original.code_seq);
 						}
 					});
@@ -152,7 +148,6 @@ $(function () {
 			var param = {code_seq : code};
 			var context = this;
 			 EggbonEditor.api.callRemoteApi('loadClipArts', param, function (result) {
-            	console.log('클립아트 json');
             	console.log(result);
 
                 var clipArts  = result.searchResult.list; 
@@ -180,6 +175,8 @@ $(function () {
 						context.close();
 					});
                 });
+                $('.view_th').addClass('select');
+				$('.view_list').removeClass('select');
             });
 		},
 		

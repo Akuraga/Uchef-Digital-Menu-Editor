@@ -485,6 +485,7 @@ $(function () {
 		},
 
         initCloneDom: function () {
+            var context = this;
             $('.preview_content .editor-page').css({"position" : 'absolute' , 'cursor' : 'default'});
             $('.preview_content .editor-page').hide();  // first hide all page 
             $('.preview_content .editor-page').removeClass('cross_grid_line');   // remove grid line
@@ -501,25 +502,12 @@ $(function () {
                    	.css({'position': 'absolute','top': '5px','right': '5px','cursor':'pointer'})
 					.bind('click', function (event) {
                        $(this).parent().parent().parent().fadeOut(100);
-                   })
+                  })
              );
-            //change popup's background color for testing   
-            $('.preview_content .component-popup').css({
-                'border' : '1px solid #bbbbbb', 'cursor' : 'default'
-            });
-            
-            //리스트 배경 투명
-            $('.preview_content .component-list').css({
-                'background-color' : 'rgba(255,255,255,0)'
-            });
-            
-            //리스트 로우 투명
-            $('.preview_content .component-listrow').css({
-                'background-color' : 'rgb(255,255,255,0)'
-            });
-            var context = this;
-            // add a event handler to order components and linkcomponent
-             $('.preview_content .component-link').each(function(index){
+            $('.preview_content .component-popup').css({'border' : '1px solid #bbbbbb', 'cursor' : 'default'});
+            $('.preview_content .component-list').css({'background-color' : 'rgba(255,255,255,0)', 'overflow' :  'auto'});
+            $('.preview_content .component-listrow').css({'background-color' : 'rgb(255,255,255,0)'});
+            $('.preview_content .component-link').each(function(index){
              	var linktype  = $(this).attr('linktype');
              	var position  = $(this).attr('position');
              	
@@ -539,15 +527,8 @@ $(function () {
              	}
              });
             
-            $('.preview_content .component-order')
-                .css('cursor', 'pointer')
-                .bind('click', function (e) {
-                    context.handleOrder(this);
-            });
-            
-            $('.preview_content .component-link')
-                .css('cursor', 'pointer')
-                .bind('click', function (e) {
+            $('.preview_content .component-order').css('cursor', 'pointer').bind('click', function (e) {context.handleOrder(this);});
+            $('.preview_content .component-link').css('cursor', 'pointer').bind('click', function (e) {
                 	var linktype  = $(this).attr('linktype');
              		var position  = $(this).attr('position');
              		if (linktype !='YouTube') context.handleLink(this);
@@ -570,8 +551,7 @@ $(function () {
              			$(this).css('opacity', 0);
              		} 
              });
-            
-            
+             $('.preview_content .component-text').each(function(index){if ($(this).text() =='') $(this).attr('placeholder', '');});
         },
 
         handleLink : function(eventSource){

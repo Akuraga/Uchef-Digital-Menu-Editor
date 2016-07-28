@@ -16,7 +16,7 @@ EggbonEditor.Project = function(options) {
 		runMode : "test", // 로컬 테스트 모드  1 이면 실 서버 운영 모드
 
 		autoSave : false,
-		autoValidate : false,
+		autoValidate : true,
 
 		autoSaveInterval : 3000,
 		validationInterval : 3000,

@@ -428,12 +428,11 @@ box-shadow: 0px -1px 12px 0px rgba(0,0,0,0.75);
 .icontype .type a.select{opacity:0.5;}
 
 .iconlist_a{padding:15px;margin-top:41px;}
-.iconlist_a li{width:65px;float:left;margin:8px;}
-.iconlist_a li img{width:100%;padding-bottom:5px;}
+.iconlist_a li{height : 85px;width:65px;float:left;margin:8px;}
+.iconlist_a li img{width:100%;height:65px;padding-bottom:5px;}
 .iconlist_a li p{padding:0;margin:0;text-align:center;}
 .iconlist_a li p.fileinfo{display:none;}
 .iconlist_a li:nth-child(7){clear:both;}
-
 .iconlist_b{margin-top:41px;}
 .iconlist_b li{border-top:1px solid #ddd;}
 .iconlist_b li:after{display:block;content:"";clear:both;}
@@ -443,6 +442,7 @@ box-shadow: 0px -1px 12px 0px rgba(0,0,0,0.75);
 .iconlist_b li p.filename{font-weight:bold;}
 .iconlist_b li p span{padding:0 10px; color:#ddd;}
 
+#icon_container{overflow-x: auto}
 #icon_container li:hover {background-color : #eee}
 
 

@@ -1191,14 +1191,7 @@ EggbonEditor.Component.Base.prototype.resetImage = function(){
 //Component classes extends super class (Component)
 EggbonEditor.Component.ImageComponent = function (parent , userOptions) {
 	this.defaultImgPath  = location.protocol + '//' +location.host + "/ne/images/img_image.png";
-    var options = {
-        x : 10, 
-        y : 10,
-        width : 60, 
-        height : 60, 
-        fixRatio : false,
-    	imgPath : this.defaultImgPath
-    };
+    var options = {x : 10, y : 10, width : 60, height : 60, fixRatio : false,imgPath : this.defaultImgPath};
     if (userOptions) $.extend(options, userOptions);
     this.parent = parent;
     //this.imgPath = "http://www.uchef.co.kr/webeditor/menupan/img/area_image.png";
@@ -1210,18 +1203,7 @@ EggbonEditor.Component.ImageComponent.prototype.refresh = function (parent) {
 };
  
 EggbonEditor.Component.TextComponent = function (parent , userOptions) {
-    var options = {
-        x: 10, 
-        y: 10, 
-        width: 250, 
-        height: 80, 
-        fixRatio: false, 
-        placeHolder : "Insert Text",
-    	text : "",
-    	fontFamily :  "Open Sans",
-    	fontSize : "35pt",
-    	color : "#FF862D"
-    };
+    var options = {x: 10, y: 10, width: 250, height: 80, fixRatio: false, placeHolder : "Insert Text",text : "",fontFamily :  "Open Sans",fontSize : "30pt",color : "#FF862D"};
     if (userOptions) $.extend(options, userOptions);
     this.parent = parent;   
     
@@ -1243,16 +1225,7 @@ EggbonEditor.Component.TextComponent.prototype.refresh = function (parent) {
 
 EggbonEditor.Component.LinkComponent = function (parent, userOptions) {
 	this.defaultImgPath  = location.protocol + '//' +location.host + "/ne/images/img_link.png";
-    var options = {
-        x: 10, 
-        y: 10, 
-        width: 60, 
-        height: 60, 
-        fixRatio: false,
-    	imgPath : this.defaultImgPath,
-    	linkType :  "PageLink",
-    	position :  ""
-    };
+    var options = {x: 10, y: 10, width: 60, height: 60, fixRatio: false,imgPath : this.defaultImgPath,linkType :  "PageLink",position :  ""};
     if (userOptions) $.extend(options, userOptions);
     this.parent = parent;
     EggbonEditor.Component.Base.call(this, this.parent.createComponentNo("link"), "link", options);
@@ -1264,19 +1237,7 @@ EggbonEditor.Component.LinkComponent.prototype.refresh = function (parent) {
 
 EggbonEditor.Component.OrderComponent = function (parent, userOptions) {
 	this.defaultImgPath  = location.protocol + '//' +location.host + "/ne/images/img_order.png";
-    var options = {
-        x: 10, 
-        y: 10, 
-        width: 60, 
-        height: 60, 
-        fixRatio: false,
-   	    imgPath :  this.defaultImgPath,
-     	menuId : '',
-    	menu  :  "",
-    	price :  "",
-     	unit : '원',
-     	stock : ''
-    };
+    var options = {x: 10, y: 10, width: 60, height: 60, fixRatio: false,imgPath :  this.defaultImgPath,menuId : '',menu  :  "",price :  "",unit : '원',stock : ''};
     if (userOptions) $.extend(options, userOptions);
     this.parent = parent;
     EggbonEditor.Component.Base.call(this, this.parent.createComponentNo("order"), "order", options);
