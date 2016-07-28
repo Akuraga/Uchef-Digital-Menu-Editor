@@ -465,7 +465,7 @@ $(function () {
 					'left' : component.xpos + 'px',
 					'top' : component.ypos + 'px',
 					'width' : $container.width(),
-					'height' : $container.height(), 
+					'height' : component.height + 'px',
 					'position' : 'absolute'
 				});
 				$container.append($listrow);
